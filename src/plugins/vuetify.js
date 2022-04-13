@@ -7,6 +7,9 @@ export default new Vuetify({
     icons: {
         iconfont: 'mdi',
     },
+    breakpoint: {
+        mobileBreakpoint: 'xs' // This is equivalent to a value of 960
+    },
     theme: {
         dark: true,
         themes: {

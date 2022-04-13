@@ -1,11 +1,11 @@
 <template>
-  <section id="hero">
-    <v-parallax dark height="700">
+  <section id="home" class="home-section">
+    <v-parallax dark :height="height" class="parallax">
       <v-row align="center" justify="center">
         <v-col cols="10">
           <v-row align="end" justify="end">
-            <v-col cols="12" md="6" xl="8">
-              <h1 class="display-2 font-weight-bold mb-4">COME TO THE SLOTH SIDE, WE HAVE NAPS</h1>
+            <v-col cols="12" md="8" xl="8" sm="8" xs="12" class="text-right">
+              <h1 class="font-weight-bold mb-4">COME TO THE SLOTH SIDE, WE HAVE NAPS</h1>
               <v-btn
                 rounded
                 outlined
@@ -34,69 +34,49 @@ export default {
   data() {
     return {
     };
-  }
+  },
+  computed: {
+      height () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return 400
+          case 'sm': return 400
+          case 'md': return 500
+          case 'lg': return 600
+          case 'xl': return 700
+          default: return 700
+        }
+      }
+    }
 };
 </script>
 
 <style lang="scss">
-.circle {
-  stroke: white;
-  stroke-dasharray: 650;
-  stroke-dashoffset: 650;
-  -webkit-transition: all 0.5s ease-in-out;
-  opacity: 0.3;
-}
 
-.playBut {
-  /*  border: 1px solid red;*/
-  display: inline-block;
-  -webkit-transition: all 0.5s ease;
-
-  .triangle {
-    -webkit-transition: all 0.7s ease-in-out;
-    stroke-dasharray: 240;
-    stroke-dashoffset: 480;
-    stroke: white;
-    transform: translateY(0);
-  }
-
-  &:hover {
-    .triangle {
-      stroke-dashoffset: 0;
-      opacity: 1;
-      stroke: white;
-      animation: nudge 0.7s ease-in-out;
-
-      @keyframes nudge {
-        0% {
-          transform: translateX(0);
-        }
-        30% {
-          transform: translateX(-5px);
-        }
-        50% {
-          transform: translateX(5px);
-        }
-        70% {
-          transform: translateX(-2px);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-    }
-
-    .circle {
-      stroke-dashoffset: 0;
-      opacity: 1;
-    }
-  }
-}
 </style>
 
-<style>
-.btn-play {
-  transition: 0.2s;
+<style lang="scss">
+@import '~vuetify/src/styles/styles.sass';
+
+.home-section {
+  h1 {
+    font-size: 50px;
+  }
+}
+
+@media #{map-get($display-breakpoints, 'md-and-down')} {
+  .home-section {
+    h1 {
+      font-size: 40px;
+    }
+  }
+}
+
+@media #{map-get($display-breakpoints, 'sm-and-down')} {
+  .home-section {
+    h1 {
+      font-size: 30px;
+    }
+  }
 }
 
 .svg-border-waves .v-image {
@@ -108,7 +88,7 @@ export default {
   overflow: hidden;
 }
 
-#hero {
+#home {
   z-index: 0;
 }
 .svg-border-waves img {

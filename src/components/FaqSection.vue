@@ -1,24 +1,32 @@
 <template>
-    <section class="faq-section py-12">
-        <h2 class="text-center mb-12">FAQ</h2>
-        <v-expansion-panels dark>
-            <v-expansion-panel
-                v-for="(item,i) in items"
-                :key="i"
-            >
-            <v-expansion-panel-header>
-                {{item.header}}
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-                {{item.content}}
-            </v-expansion-panel-content>
-            </v-expansion-panel>
-        </v-expansion-panels>
+    <section id="faq" class="faq-section py-12">
+        <div class="max-width-section">
+            <h2 class="text-center mb-6">FAQ</h2>
+            <BaseDivider class="divider mb-12"/>
+            <v-expansion-panels dark>
+                <v-expansion-panel
+                    v-for="(item,i) in items"
+                    :key="i"
+                >
+                <v-expansion-panel-header>
+                    {{item.header}}
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                    {{item.content}}
+                </v-expansion-panel-content>
+                </v-expansion-panel>
+            </v-expansion-panels>
+        </div>
     </section>
 </template>
 <script>
+import BaseDivider from "@/components/BaseDivider";
+
 export default {
     name: "FaqSection",
+    components: {
+        BaseDivider
+    },
     data(){
         return {
             items: [
@@ -45,10 +53,23 @@ export default {
 </script>
 <style lang="scss">
 .faq-section {
-    background: #000000;
-
     .v-expansion-panels .v-expansion-panel {
-        background-color: #000000;
+        background-color: #000000 !important;
+    }
+
+    background-color: #000000;
+
+    .divider {
+        max-width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .max-width-section {
+        margin: 0 auto;
+        max-width: 1000px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 </style>

@@ -4,6 +4,7 @@
     <v-main class="pt-0">
       <Home />
       <About />
+      <Roadmap />
       <Team />
       <Faq />
     </v-main>
@@ -27,6 +28,8 @@
 </template>
 
 <style lang="scss" scoped>
+@import '~vuetify/src/styles/styles.sass';
+
 .v-main {
   background-image: url("~@/assets/bgSloth.png");
   background-color: #000000;
@@ -34,8 +37,27 @@
   background-position: 20% 20%;
   background-size: 100%;
 }
+
 .theme--dark.v-application {
   background-color: #000000 !important;
+}
+
+@media all and (max-width: 680px) {
+  .v-main {
+    background-position: 20% 20%;
+  }
+}
+
+@media all and (min-width: 680px) and (max-width: 1264px){
+  .v-main {
+    background-position: 20% 10%;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .v-main {
+    background-position: 20% 25%;
+  }
 }
 </style>
 
@@ -45,7 +67,7 @@ import Footer from "./components/MainFooter";
 import Home from "./components/HomeSection";
 import About from "./components/AboutSection";
 import Faq from "./components/FaqSection"
-// import Roadmap from "./components/MainRoadmap";
+import Roadmap from "./components/RoadmapSection";
 import Team from "./components/TeamSection"
 
 export default {
@@ -57,6 +79,7 @@ export default {
     Home,
     About,
     Team,
+    Roadmap,
     Faq
   },
 
